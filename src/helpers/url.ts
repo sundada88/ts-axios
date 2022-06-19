@@ -8,7 +8,7 @@
   })
 */
 
-import { isArray, isDate, isObject, isUndefined } from './utils'
+import { isArray, isDate, isPlainObject, isUndefined } from './utils'
 
 function encode (val: string): string {
   return encodeURIComponent(val)
@@ -43,7 +43,7 @@ export function buildURL (url: string, params?: any): string {
     values.forEach(val => {
       if (isDate(val)) {
         val = val.toISOString()
-      } else if (isObject(val)) {
+      } else if (isPlainObject(val)) {
         val = JSON.stringify(val)
       }
       // 不管是key 还是 value 都需要 encode
