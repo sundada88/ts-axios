@@ -19,3 +19,7 @@ export function isDate (val: any): val is Date {
 export function isUndefined (val: any): boolean {
   return typeof val === 'undefined'
 }
+
+export function isString (val: any): val is string {
+  return toString.call(val) === '[object String]'
+}
