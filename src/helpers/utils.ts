@@ -23,3 +23,10 @@ export function isUndefined (val: any): boolean {
 export function isString (val: any): val is string {
   return toString.call(val) === '[object String]'
 }
+
+export function extend<T, K> (to: T, from: K): T & K {
+  for (const key in from) {
+    ;(to as T & K)[key] = from[key] as any
+  }
+  return to as T & K
+}
