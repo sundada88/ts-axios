@@ -1,4 +1,4 @@
-import { AxiosPromise, AxiosRequestConfig } from '../types'
+import { AxiosPromise, AxiosRequestConfig, Method } from '../types'
 import dispatchRequest from './dispatchRequest'
 
 export default class Axios {

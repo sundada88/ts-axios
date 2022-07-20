@@ -1,6 +1,6 @@
 import { AxiosRequestConfig, AxiosResponse } from '../types/index'
 export class AxiosError extends Error {
-  isAxiosError: boolean
+  isAxiosError?: boolean
   config: AxiosRequestConfig
   code?: string | null
   request?: any
