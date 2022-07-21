@@ -11,7 +11,9 @@ function normalizeHeaderName (headers: any, normalizedName: string): void {
 }
 
 export function processHeaders (headers: any, data: any): any {
+  // 可以在 header 中传入 content-type(大小写不敏感)
   normalizeHeaderName(headers, 'Content-Type')
+
   // 如果 data 是对象，那么需要添加 ['Content-Type'] = 'application/json;charset=utf-8'
   if (isPlainObject(data)) {
     if (headers && !headers['Content-Type']) {

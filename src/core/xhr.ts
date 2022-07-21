@@ -48,6 +48,7 @@ export default function xhr (config: AxiosRequestConfig): AxiosPromise {
 
     // 设置请求头
     Object.keys(headers).forEach(name => {
+      // 如果 data 是 null，那么 content-type 是没有意义的
       if (data === null && name.toLowerCase() === 'content-type') {
         delete headers[name]
       } else {

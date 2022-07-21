@@ -20,15 +20,19 @@ export interface AxiosRequestConfig {
   data?: any
   params?: any
   headers?: any
+  // 对于一个 ajax 请求的 `response` 我们指定他的响应的数据类型， 通过设置 `XMLHttpRequest` 对象的 `responseType`
   responseType?: XMLHttpRequestResponseType
   timeout?: number
 }
 
+// xhr 返回信息类型
 export interface AxiosResponse {
   data: any
   status: number
   statusText: string
+  // 响应头
   headers: any
+  // 请求配置
   config: AxiosRequestConfig
   request: any
 }
