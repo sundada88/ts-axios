@@ -13,6 +13,7 @@ export type AxiosRequestConfig = {
     params?: any
     headers?: any
     responseType?: XMLHttpRequestResponseType
+    timeout?: number
 }
 
 // xhr 请求返回
