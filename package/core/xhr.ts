@@ -1,7 +1,7 @@
 import { time } from "console";
-import { createError } from "./helper/error";
-import { parseHeaders } from "./helper/header";
-import { AxiosPromise, AxiosRequestConfig, AxiosResponse } from "./types";
+import { createError } from "../helper/error";
+import { parseHeaders } from "../helper/header";
+import { AxiosPromise, AxiosRequestConfig, AxiosResponse } from "../types";
 
 export function xhr(config: AxiosRequestConfig): AxiosPromise {
     return new Promise((resolve, reject) => {
@@ -11,7 +11,7 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
         if (responseType) {
             request.responseType = responseType
         }
-        request.open(method.toUpperCase(),url, true)
+        request.open(method.toUpperCase(), url!, true)
         // handle error
         // 1. xml 的 error 事件
         request.onerror = function handleError () {
