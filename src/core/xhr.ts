@@ -10,7 +10,7 @@ export default function xhr (config: AxiosRequestConfig): AxiosPromise {
     if (responseType) {
       request.responseType = responseType
     }
-    request.open(method.toUpperCase(), url, true)
+    request.open(method.toUpperCase(), url!, true)
 
     if (timeout) {
       request.timeout = timeout
@@ -32,6 +32,7 @@ export default function xhr (config: AxiosRequestConfig): AxiosPromise {
         request
       }
       // resolve(response)
+      handleResponse(response)
     }
 
     // 处理网络错误

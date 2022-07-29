@@ -6,10 +6,10 @@ export default class Axios {
     if (typeof url === 'string') {
       if (!config) {
         config = {}
-      } else {
-        config = url
       }
       config.url = url
+    } else {
+        config = url
     }
     return dispatchRequest(config)
   }

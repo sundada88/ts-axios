@@ -15,7 +15,7 @@ export type Method =
   | 'PATCH'
 
 export interface AxiosRequestConfig {
-  url: string
+  url?: string
   method?: Method
   data?: any
   params?: any
@@ -26,8 +26,8 @@ export interface AxiosRequestConfig {
 }
 
 // xhr 返回信息类型
-export interface AxiosResponse {
-  data: any
+export interface AxiosResponse<T = any> {
+  data: T
   status: number
   statusText: string
   // 响应头
@@ -37,7 +37,7 @@ export interface AxiosResponse {
   request: any
 }
 
-export interface AxiosPromise extends Promise<AxiosResponse> {}
+export interface AxiosPromise<T = any> extends Promise<AxiosResponse<T>> {}
 
 export interface AxiosError extends Error {
   config: AxiosRequestConfig
@@ -48,23 +48,23 @@ export interface AxiosError extends Error {
 }
 
 export interface Axios {
-  request(config: AxiosRequestConfig): AxiosPromise
+  request<T = any>(config: AxiosRequestConfig): AxiosPromise<T>
 
-  get(url: string, config?: AxiosRequestConfig): AxiosPromise
-
-  delete(url: string, config?: AxiosRequestConfig): AxiosPromise
-
-  head(url: string, config?: AxiosRequestConfig): AxiosPromise
-
-  options(url: string, config?: AxiosRequestConfig): AxiosPromise
-
-  post(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise
-
-  put(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise
-
-  patch(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise
-}
-export interface AxiosInstance extends Axios {
-  (config: AxiosRequestConfig): AxiosPromise
-  (url: string, config?: AxiosRequestConfig): AxiosPromise
+  get<T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>
+                                                             
+  delete<T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>
+                                                             
+  head<T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>
+                                                             
+  options<T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>
+                                                             
+  post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<T>
+                                                             
+  put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<T>
+                                                             
+  patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise<T>
+}                                                            
+export interface AxiosInstance extends Axios {               
+  <T = any>(config: AxiosRequestConfig): AxiosPromise<T>
+  <T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>
 }

@@ -7,7 +7,7 @@ import axios from '../../src/index'
 //     msg: 'hi'
 //   }
 // })
-//
+
 // axios.request({
 //   url: '/extend/post',
 //   method: 'post',
@@ -15,7 +15,7 @@ import axios from '../../src/index'
 //     msg: 'hello'
 //   }
 // })
-//
+
 // axios.get('/extend/get')
 //
 // axios.options('/extend/options')
@@ -30,20 +30,31 @@ import axios from '../../src/index'
 //
 // axios.patch('/extend/patch', { msg: 'patch' })
 
-// axios({
-//   url: '/extend/post',
-//   method: 'post',
-//   data: {
-//     msg: 'hi'
-//   }
-// })
-//
-// axios('/extend/post', {
-//   method: 'post',
-//   data: {
-//     msg: 'hello'
-//   }
-// })
+axios({
+  url: '/extend/post',
+  method: 'post',
+  data: {
+    msg: 'hi'
+  }
+}).then(res => {
+  console.log(1, res)
+})
+
+axios('/extend/post', {
+  method: 'post',
+  data: {
+    msg: 'hello'
+  }
+}).then(res => {
+  console.log(2, res)
+})
+
+axios('/simple/get', {
+  method: 'get'
+}).then(res => {
+  console.log(123456)
+  console.log(res)
+})
 
 interface ResponseData<T = any> {
   code: number
@@ -66,7 +77,8 @@ function getUser<T>() {
 async function test() {
   const user = await getUser<User>()
   if (user) {
-    console.log(user.result.name)
+    console.log(user.code)
+    console.log(user.result.age)
   }
 }
 
