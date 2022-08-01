@@ -77,7 +77,7 @@ function getUser<T>() {
 async function test() {
   const user = await getUser<User>()
   if (user) {
-    console.log(user.code)
+    console.log(user.result.name)
     console.log(user.result.age)
   }
 }
