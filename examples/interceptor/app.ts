@@ -26,6 +26,11 @@ axios.interceptors.response.use(res => {
   return res
 })
 
+axios.interceptors.response.use(res => {
+  res.data +='4'
+  return res
+})
+
 axios.interceptors.response.eject(interceptor)
 
 axios({

@@ -1,3 +1,5 @@
+import { InterceptorManager } from "../core/InterceptorManager"
+
 export type Method =
   | 'get'
   | 'GET'
@@ -48,6 +50,11 @@ export interface AxiosError extends Error {
 }
 
 export interface Axios {
+  interceptors: {
+    request: InterceptorManager<AxiosRequestConfig>
+    response: InterceptorManager<AxiosResponse>
+  }
+
   request<T = any>(config: AxiosRequestConfig): AxiosPromise<T>
 
   get<T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>
@@ -71,7 +78,8 @@ export interface AxiosInstance extends Axios {
 
 
 export interface AxiosInterceptorManager<T> {
-  use(resolved: ResolvedFn<T>, rejected: RejectedFn): number
+  use(resolved: ResolvedFn<T>, rejected?: RejectedFn): number
+
   eject(id: number): void
 }
 
