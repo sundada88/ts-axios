@@ -1,3 +1,4 @@
+import { prototype } from "events"
 import { InterceptorManager } from "../core/InterceptorManager"
 
 export type Method =
@@ -25,6 +26,7 @@ export interface AxiosRequestConfig {
   // 对于一个 ajax 请求的 `response` 我们指定他的响应的数据类型， 通过设置 `XMLHttpRequest` 对象的 `responseType`
   responseType?: XMLHttpRequestResponseType
   timeout?: number
+  [propName: string]: any
 }
 
 // xhr 返回信息类型
@@ -50,6 +52,9 @@ export interface AxiosError extends Error {
 }
 
 export interface Axios {
+
+  defaults: AxiosRequestConfig
+
   interceptors: {
     request: InterceptorManager<AxiosRequestConfig>
     response: InterceptorManager<AxiosResponse>
