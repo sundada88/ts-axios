@@ -1,4 +1,3 @@
-import { prototype } from "events"
 import { InterceptorManager } from "../core/InterceptorManager"
 
 export type Method =
