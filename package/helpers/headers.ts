@@ -4,7 +4,6 @@ import { isPlainObject } from "./utils"
 function normalizeHeaderName(headers:any, normalizeName: string) {
     if (!headers) return
     Object.keys(headers).forEach(name => {
-        console.log(name)
         if (name !== normalizeName && name.toUpperCase() === normalizeName.toUpperCase() ) {
             headers[normalizeName] = headers[name]
             delete headers[name]
@@ -20,4 +19,16 @@ export function processHeaders(headers: any, data: any) {
         }
     }
     return headers
+}
+
+export function parseHeaders(headers:string): any {
+    let parsed = Object.create(null)
+    if (!headers) parsed
+    headers.split("\r\n").forEach(item => {
+        let [key, val] = item.split(':')
+        key = key.trim().toLowerCase()
+        if (!key) return
+        parsed[key] = val
+    })
+    return parsed
 }

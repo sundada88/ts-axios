@@ -53,13 +53,15 @@ axios({
 //   }
 // })
 
-// axios({
-//   method: 'get',
-//   url: '/base/get?foo=bar',
-//   params: {
-//     bar: 'baz'
-//   }
-// })
+axios({
+  method: 'get',
+  url: '/base/get?foo=bar',
+  params: {
+    bar: 'baz'
+  }
+}).then(res => {
+  console.log('bbbbb', res)
+})
 
 axios({
   method: 'post',
@@ -69,8 +71,10 @@ axios({
     b: 2222
   },
   headers: {
-    'content-type': 'aaaaaaaaaaaaaaaa'
+    'content-type': 'aaaaaaaa'
   }
+}).then(res => {
+  console.log('aaaaaaaaaaaaaa', res)
 })
 
 // axios({

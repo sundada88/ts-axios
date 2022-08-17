@@ -18,7 +18,6 @@ export function buildURL(url, params): string {
         const val = params[key]
         if (val == null || isUndefined(val)) return
         let values:string[]
-        console.log(val)
         if (Array.isArray(val)) {
             values = val
             key += '[]'
