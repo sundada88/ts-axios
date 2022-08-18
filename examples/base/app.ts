@@ -1,4 +1,4 @@
-import axios from '../../package/index'
+import axios, {AxiosError} from '../../package/index'
 
 axios({
   method: 'get',
@@ -6,6 +6,21 @@ axios({
   params: {
     foo: ['baraa', 'baz']
   }
+})
+axios({
+  method: 'get',
+  url: '/error/timeout',
+  timeout: 2000
+}).then((res) => {
+  console.log(res)
+}).catch((e: AxiosError) => {
+  console.log(e.message)
+})
+axios.get('/base/get').then((res) => {
+  console.log('ccccccccccccccc')
+  console.log(res)
+}).catch((e: AxiosError) => {
+  console.log(e.message)
 })
 
 // axios({
