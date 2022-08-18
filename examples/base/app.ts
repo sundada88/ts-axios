@@ -22,6 +22,12 @@ axios.get('/base/get').then((res) => {
 }).catch((e: AxiosError) => {
   console.log(e.message)
 })
+axios('/base/get', {
+  method:'get'
+}).then(res => {
+  console.log(33333333333)
+  console.log(res)
+})
 
 // axios({
 //   method: 'get',

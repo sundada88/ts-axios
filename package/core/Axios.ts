@@ -1,8 +1,15 @@
+import { isString } from "../helpers/utils";
 import { AxiosPromise, AxiosRequestConfig, Method } from "../types";
 import dispatchRequest from "./dispatchRequest";
 
 export class Axios {
-    request(config: AxiosRequestConfig): AxiosPromise {
+    request(url: any, config?: any): AxiosPromise {
+        if (isString(url)) {
+          if (!config) config = {}
+          config.url = url
+        } else {
+          config = url
+        }
         return dispatchRequest(config)
     }
     get(url: string, config?: AxiosRequestConfig):AxiosPromise {
