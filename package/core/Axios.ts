@@ -7,6 +7,7 @@ export class Axios {
         if (isString(url)) {
           if (!config) config = {}
           config.url = url
+          config.method = 'get'
         } else {
           config = url
         }

@@ -54,7 +54,6 @@ export default class Axios {
       const {resolved, rejected}  = chain.shift()!
       promise = promise.then(resolved, rejected)
     }
-    // 
     return promise
   }
   get (url: string, config?: AxiosRequestConfig): AxiosPromise {
@@ -86,7 +85,7 @@ export default class Axios {
   }
 
   _requestMethodWithoutData (method: Method, url: string, config?: AxiosRequestConfig) {
-    return this.request(
+  return this.request(
       Object.assign(config || {}, {
         method,
         url
