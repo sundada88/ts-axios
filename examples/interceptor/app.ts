@@ -1,4 +1,4 @@
-import axios from '../../src/index'
+import axios from '../../package/index'
 
 axios.interceptors.request.use(config => {
   config.headers.test += '1'

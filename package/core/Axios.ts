@@ -3,7 +3,7 @@ import {  AxiosPromise, AxiosRequestConfig, AxiosResponse, Method, RejectFn, Res
 import dispatchRequest from "./dispatchRequest";
 import { InterceptorManager } from "./InterceptorManager";
 
-interface Interceptors {
+export interface Interceptors {
   request: InterceptorManager<AxiosRequestConfig>
   response: InterceptorManager<AxiosResponse>
 }
