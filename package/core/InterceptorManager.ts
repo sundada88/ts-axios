@@ -9,7 +9,7 @@ export class InterceptorManager<T> {
     constructor() {
         this.interceptors = []
     }
-    use(resolved: ResolveFn<T>, rejected: RejectFn): number {
+    use(resolved: ResolveFn<T>, rejected?: RejectFn): number {
         this.interceptors.push({resolved, rejected})
         return this.interceptors.length - 1
     }

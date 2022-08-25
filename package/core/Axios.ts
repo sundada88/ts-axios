@@ -10,7 +10,7 @@ export interface Interceptors {
 
 interface PromiseChain {
   resolved: ResolveFn | ((config: AxiosRequestConfig) => AxiosPromise)
-  rejected: RejectFn | undefined
+  rejected?: RejectFn
 }
 
 export class Axios {
