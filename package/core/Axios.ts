@@ -2,6 +2,7 @@ import { isString } from "../helpers/utils";
 import {  AxiosPromise, AxiosRequestConfig, AxiosResponse, Method, RejectFn, ResolveFn } from "../types";
 import dispatchRequest from "./dispatchRequest";
 import { InterceptorManager } from "./InterceptorManager";
+import {mergeConfig} from './mergeConfig'
 
 export interface Interceptors {
   request: InterceptorManager<AxiosRequestConfig>
@@ -31,6 +32,10 @@ export class Axios {
         } else {
           config = url
         }
+        console.log('this.defaults --->', this.defaults)
+        console.log(config)
+        config = mergeConfig(this.defaults, config)
+        console.log('config --->', config)
         const chain: PromiseChain[] = [
           {
             resolved: dispatchRequest,

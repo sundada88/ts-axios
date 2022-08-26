@@ -1,4 +1,5 @@
-import axios  from '../../src/index'
+import axios  from '../../package/index'
+// import axios  from '../../src/index'
 import qs from 'qs'
 
 axios.defaults.headers.common['test2'] = 123
