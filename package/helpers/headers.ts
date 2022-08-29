@@ -34,6 +34,43 @@ export function parseHeaders(headers:string): any {
     return parsed
 }
 
+/*
+    headers: {
+        common: {
+            Accept: 'application/json, text/plain, *\/*',
+        },
+        post: {
+            Content-Type: 'a'
+        }
+    }
+
+    => => => =>
+    headers: {
+        Accept: 'applica',
+        Cotent-Type: 'a'
+    }
+
+    function deepMerge(...objs) {
+        const result = Object.create({})
+        objs.forEach(obj => {
+            if (obj) {
+                Object.keys(obj).forEach(key => {
+                    const val = obj[key]
+                    if (isPlainObject(val)) {
+                        if (isPlainObject(resule[key])) {
+                            result[key] = deepMerge(result[key], val)
+                        } else {
+                            result[key] = deepMerge({}, val)
+                        }
+                    } else {
+                        result[key] = val
+                    }
+                })
+            }
+        })
+        return result
+    }
+*/ 
 export function flattenHeaders(headers: any, method: Method): any {
     if (!headers) return headers
     headers = deepMerge(headers.common || {}, headers[method] || {}, headers)
