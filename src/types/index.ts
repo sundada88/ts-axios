@@ -25,6 +25,9 @@ export interface AxiosRequestConfig {
   // 对于一个 ajax 请求的 `response` 我们指定他的响应的数据类型， 通过设置 `XMLHttpRequest` 对象的 `responseType`
   responseType?: XMLHttpRequestResponseType
   timeout?: number
+  transformRequest?: AxiosTransformer | AxiosTransformer[]
+  transformResponse?: AxiosTransformer | AxiosTransformer[]
+
   [propName: string]: any
 }
 
@@ -92,4 +95,8 @@ export interface ResolvedFn<T = any> {
 }
 export interface RejectedFn {
   (error: any): any
+}
+
+export interface AxiosTransformer {
+  (data: any, headers?: any): any
 }
