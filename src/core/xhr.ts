@@ -17,6 +17,7 @@ export default function xhr (config: AxiosRequestConfig): AxiosPromise {
     }
     
     if (cancelToken) {
+      // 当 promise 的状态改变之后才会执行后面的 then 方法
       cancelToken.promise.then(reason => {
         request.abort()
         reject(reason)
