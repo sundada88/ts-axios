@@ -1,4 +1,4 @@
-import Cancel, { isCancel } from './cancel/Calcel'
+import Cancel, { isCancel } from './cancel/Cancel'
 import { CancelToken } from './cancel/CancelToken'
 import Axios from './core/axios'
 import defaults from './core/defaults'
