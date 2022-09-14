@@ -6,6 +6,7 @@ import xhr from './xhr'
 
 export default function dispatchRequest (config: AxiosRequestConfig): AxiosPromise {
   // TODO:
+  throwIfCancellationRequested(config)
   // 处理 config
   processConfig(config)
   return xhr(config).then(res => {
@@ -34,4 +35,12 @@ function transformResponseData (res: AxiosResponse): AxiosResponse {
   // res.data = transformResponse(res.data)
   res.data = transform(res.data, res.headers, res.config.transformResponse)
   return res
+}
+
+
+function throwIfCancellationRequested(config: AxiosRequestConfig) {
+  if (config) {
+    config.cancelToken?.throwIfRequested()
+    // config.cancelToken.throwIfRequested()
+  }
 }
